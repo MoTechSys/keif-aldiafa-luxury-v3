@@ -802,3 +802,63 @@ video::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE HERO RESPONSIVE - Video & Frame Optimization
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Hero section on mobile */
+  section[aria-label="الشاشة الرئيسية"] {
+    min-height: 100svh !important;
+    height: auto !important;
+  }
+  
+  /* Video fills entire section on mobile */
+  section[aria-label="الشاشة الرئيسية"] video {
+    min-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+  
+  /* Glassmorphism card on mobile - Full width with proper padding */
+  .hero-glass-card,
+  section[aria-label="الشاشة الرئيسية"] > div:last-child > div:first-of-type {
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 24px 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  section[aria-label="الشاشة الرئيسية"] {
+    min-height: 100svh !important;
+  }
+  
+  /* Larger touch targets for buttons */
+  section[aria-label="الشاشة الرئيسية"] a {
+    padding: 14px 20px !important;
+    min-height: 48px;
+  }
+}
+
+/* Safe area for notched phones */
+@supports (padding: max(0px)) {
+  section[aria-label="الشاشة الرئيسية"] {
+    padding-top: max(0px, env(safe-area-inset-top));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  section[aria-label="الشاشة الرئيسية"] {
+    min-height: 100vh !important;
+  }
+  
+  section[aria-label="الشاشة الرئيسية"] > div:last-child {
+    padding-top: 8px !important;
+  }
+}

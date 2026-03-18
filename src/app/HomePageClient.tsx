@@ -399,7 +399,7 @@ export function HomePageClient() {
           ═══════════════════════════════════════════════════════════════════════════ */}
       <section 
         ref={heroRef} 
-        className="relative h-screen min-h-[650px] max-h-[950px] overflow-hidden" 
+        className="relative min-h-screen h-auto sm:h-screen sm:min-h-[650px] sm:max-h-[950px] overflow-hidden" 
         aria-label="الشاشة الرئيسية"
       >
         {/* Background Video with Seamless Loop - Luxury Hospitality */}
@@ -426,14 +426,14 @@ export function HomePageClient() {
           className="absolute inset-0 flex flex-col items-center justify-start sm:justify-center text-center px-4 sm:px-6 pt-20 sm:pt-0" 
           style={{ opacity: heroOpacity }}
         >
-          {/* ══ GLASSMORPHISM CARD ══ */}
+          {/* ══ GLASSMORPHISM CARD - RESPONSIVE FOR MOBILE ══ */}
           <motion.div
             initial={{ opacity: 0, scale: 0.92, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full max-w-2xl px-8 sm:px-12 py-12 sm:py-16 rounded-[16px] mt-8 sm:mt-0"
+            className="relative w-[95vw] sm:w-full max-w-[95vw] sm:max-w-2xl px-4 sm:px-8 md:px-12 py-8 sm:py-12 md:py-16 rounded-[12px] sm:rounded-[16px] mt-4 sm:mt-0 mx-2"
             style={{
-              background: "rgba(18, 18, 18, 0.8)",
+              background: "rgba(18, 18, 18, 0.85)",
               backdropFilter: "blur(24px) saturate(200%)",
               WebkitBackdropFilter: "blur(24px) saturate(200%)",
               border: "1px solid rgba(212, 175, 55, 0.25)",
@@ -454,7 +454,7 @@ export function HomePageClient() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="flex items-center justify-center gap-4 mb-8"
+              className="flex items-center justify-center gap-2 sm:gap-4 mb-4 sm:mb-8"
             >
               <div className="h-px w-12 bg-gradient-to-l from-[#D4AF37] to-transparent" />
               <span
@@ -472,9 +472,9 @@ export function HomePageClient() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="font-cairo mb-6"
+              className="font-cairo mb-3 sm:mb-6"
               style={{
-                fontSize: "clamp(2.5rem, 9vw, 5rem)",
+                fontSize: "clamp(2rem, 10vw, 5rem)",
                 fontWeight: 900,
                 lineHeight: 1.1,
                 background: "linear-gradient(90deg, #D4AF37 0%, #F9E488 30%, #B8860B 60%, #F9E488 80%, #D4AF37 100%)",
@@ -493,7 +493,7 @@ export function HomePageClient() {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="mb-8 mx-auto"
+              className="mb-4 sm:mb-8 mx-auto"
               style={{
                 width: 100,
                 height: 3,
@@ -507,7 +507,7 @@ export function HomePageClient() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.7 }}
-              className="flex flex-col items-center gap-3 mb-8"
+              className="flex flex-col items-center gap-2 sm:gap-3 mb-4 sm:mb-8"
             >
               <p
                 className="text-[#F9E488] font-semibold tracking-[0.25em]"
@@ -533,18 +533,18 @@ export function HomePageClient() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.8 }}
-              className="max-w-xl mx-auto"
+              className="max-w-xl mx-auto px-2"
             >
               <p
-                className="text-[#E0E0E0]/90 mb-8 leading-[1.85] font-light"
-                style={{ fontSize: "clamp(1rem, 2vw, 1.1rem)", fontFamily: "Tajawal, sans-serif" }}
+                className="text-[#E0E0E0]/90 mb-4 sm:mb-8 leading-[1.75] sm:leading-[1.85] font-light"
+                style={{ fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)", fontFamily: "Tajawal, sans-serif" }}
               >
                 نبتكر تجارب ضيافة استثنائية تلبي تطلعات النخبة، ونرتقي بمعايير الفخامة لفعاليات الشركات والمحافل الحكومية والخاصة.
               </p>
               
               {/* Events List */}
-              <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 font-medium"
-                style={{ fontSize: "clamp(0.85rem, 1.5vw, 0.95rem)", fontFamily: "Tajawal, sans-serif" }}
+              <div className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-5 gap-y-2 sm:gap-y-3 font-medium"
+                style={{ fontSize: "clamp(0.75rem, 2vw, 0.95rem)", fontFamily: "Tajawal, sans-serif" }}
               >
                 {['المعارض', 'المؤتمرات', 'الاجتماعات', 'الفعاليات الوطنية', 'المناسبات الخاصة'].map((item, i, arr) => (
                   <span key={item} className="flex items-center gap-3">
@@ -569,7 +569,7 @@ export function HomePageClient() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.95 }}
-            className="flex gap-4 flex-wrap justify-center mt-12 sm:mt-16 relative z-20"
+            className="flex gap-3 sm:gap-4 flex-wrap justify-center mt-6 sm:mt-12 md:mt-16 relative z-20 px-2"
           >
             {/* PRIMARY GOLD BUTTON - Gold Shine Gradient */}
             <Link
@@ -580,8 +580,8 @@ export function HomePageClient() {
                 backgroundSize: "200% auto",
                 color: "#0A0A0A",
                 fontWeight: 800,
-                fontSize: "0.95rem",
-                padding: "14px 36px",
+                fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)",
+                padding: "12px 24px sm:px-36px",
                 borderRadius: 50,
                 boxShadow: "0 6px 25px rgba(212, 175, 55, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 transition: "all 0.3s ease",
@@ -609,8 +609,8 @@ export function HomePageClient() {
                 border: "1.5px solid rgba(212, 175, 55, 0.5)",
                 color: "#F9E488",
                 fontWeight: 700,
-                fontSize: "0.95rem",
-                padding: "14px 36px",
+                fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)",
+                padding: "12px 24px sm:px-36px",
                 borderRadius: 50,
                 boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
                 transition: "all 0.3s ease",
