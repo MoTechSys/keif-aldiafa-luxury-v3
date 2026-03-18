@@ -245,12 +245,12 @@ function RoyalTrioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-center gap-2 sm:gap-3">
+          <div className="flex justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto scrollable-tabs pb-1">
             {categories.map((category) => (
               <motion.button
                 key={category.id}
                 onClick={() => onTabChange(category.id)}
-                className="relative group flex-1 max-w-sm"
+                className="relative group flex-shrink-0 min-w-[70px] sm:min-w-0 sm:flex-1 max-w-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

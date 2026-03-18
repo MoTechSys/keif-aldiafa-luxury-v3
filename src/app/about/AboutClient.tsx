@@ -30,7 +30,7 @@ export default function AboutClient() {
 
       {/* STORY + STATS */}
       <section className="px-4 pb-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 items-center">
           <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }} className="relative rounded-3xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
             <ImageWithFallback src={heroImg} alt="كيف الضيافة" className="w-full h-full object-cover" />
             <div className="absolute inset-0 img-overlay" />
@@ -38,7 +38,7 @@ export default function AboutClient() {
           <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }}>
             <h2 className="text-[#F5F5DC] mb-5" style={{ fontSize: "clamp(1.5rem, 3.5vw, 2rem)", fontWeight: 800}}>قصتنا</h2>
             <p className="text-[#F5F5DC]/55 text-sm leading-8 mb-6">بدأنا رحلتنا عام ٢٠١٦ برؤية واضحة: تقديم خدمات ضيافة فاخرة تعكس أصالة الثقافة السعودية مع لمسة عصرية مبتكرة. منذ ذلك الحين، قدمنا خدماتنا لأكثر من ٥٠٠ مناسبة، من حفلات الزفاف الفاخرة إلى الفعاليات الحكومية الكبرى.</p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
               {[
                 { num: "+500", label: "مناسبة" },
                 { num: "8+", label: "سنوات خبرة" },
@@ -63,9 +63,9 @@ export default function AboutClient() {
             <h2 className="text-[#F5F5DC]" style={{ fontSize: "clamp(1.6rem, 4.5vw, 2.4rem)", fontWeight: 800}}>ما يميزنا</h2>
             <div className="mt-4 rounded-full mx-auto" style={{ width: 90, height: 2, background: "linear-gradient(90deg, transparent, #B8860B 30%, #D4A017 60%, transparent)" }} />
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {values.map((v, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ delay: i * 0.1 }} className="card-luxury p-6 rounded-2xl text-center">
+              <motion.div key={i} initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ delay: i * 0.1 }} className="card-luxury p-5 sm:p-6 rounded-2xl text-center">
                 <div className="w-14 h-14 rounded-xl flex items-center justify-center text-[#B8860B] mx-auto mb-5" style={{ background: "linear-gradient(135deg, rgba(184,134,11,0.12), rgba(184,134,11,0.04))", border: "1px solid rgba(184,134,11,0.2)" }}>{v.icon}</div>
                 <h3 className="text-[#F5F5DC] mb-3" style={{ fontSize: "1.05rem", fontWeight: 700 }}>{v.title}</h3>
                 <p className="text-[#F5F5DC]/50 text-sm">{v.desc}</p>
