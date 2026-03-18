@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative pt-16 pb-32 md:pb-16 overflow-hidden"
+      className="relative pt-12 sm:pt-16 pb-8 md:pb-16 overflow-hidden"
       role="contentinfo"
       style={{
         background: "linear-gradient(180deg, #0f0f0f 0%, #080602 100%)",

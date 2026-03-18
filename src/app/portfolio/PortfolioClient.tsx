@@ -194,12 +194,12 @@ function RoyalTrioNav({ activeFilter, onFilterChange }: { activeFilter: FilterTy
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-center gap-2 sm:gap-3">
+          <div className="flex justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto scrollable-tabs pb-1">
             {filters.map((filter) => (
               <motion.button
                 key={filter.key}
                 onClick={() => onFilterChange(filter.key)}
-                className="relative group flex-1 max-w-sm"
+                className="relative group flex-shrink-0 min-w-[75px] sm:min-w-0 sm:flex-1 max-w-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

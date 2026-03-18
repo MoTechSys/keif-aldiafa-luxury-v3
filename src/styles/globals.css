@@ -71,6 +71,33 @@ body {
   line-height: 1.7;
 }
 
+/* Prevent horizontal overflow on all elements */
+html {
+  overflow-x: hidden;
+}
+
+/* ── GOLD GRADIENT TEXT - Universal Utility ── */
+.gold-gradient-text {
+  background: linear-gradient(90deg, #D4AF37 0%, #F9E488 40%, #B8860B 80%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── CARD LUXURY - Universal Card Style ── */
+.card-luxury {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(139, 125, 80, 0.04) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s var(--transition-luxury);
+}
+
+.card-luxury:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.12);
+}
+
 /* CAIRO: Strictly for Headings (H1-H6) - Weights 700-900 */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Cairo', sans-serif;
@@ -562,7 +589,7 @@ button:focus-visible {
   .luxury-card {
     width: 100%;
     padding: 20px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   
   .luxury-card-lg {
@@ -575,6 +602,16 @@ button:focus-visible {
   
   .section-padding-lg {
     padding: 60px 20px;
+  }
+  
+  /* Ensure no horizontal overflow on mobile */
+  * {
+    max-width: 100vw;
+  }
+  
+  img, video {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -807,9 +844,10 @@ video::-webkit-media-controls-start-playback-button {
    MOBILE HERO RESPONSIVE - Video & Frame Optimization
    ═══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 640px) {
-  /* Hero section on mobile */
+  /* Hero section on mobile - properly sized */
   section[aria-label="الشاشة الرئيسية"] {
     min-height: 100svh !important;
+    min-height: 100vh !important;
     height: auto !important;
   }
   
@@ -823,11 +861,11 @@ video::-webkit-media-controls-start-playback-button {
   /* Glassmorphism card on mobile - Full width with proper padding */
   .hero-glass-card,
   section[aria-label="الشاشة الرئيسية"] > div:last-child > div:first-of-type {
-    width: calc(100vw - 24px) !important;
-    max-width: calc(100vw - 24px) !important;
+    width: calc(100vw - 32px) !important;
+    max-width: calc(100vw - 32px) !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    padding: 24px 16px !important;
+    padding: 28px 20px !important;
   }
 }
 
@@ -835,13 +873,56 @@ video::-webkit-media-controls-start-playback-button {
   /* Extra small screens */
   section[aria-label="الشاشة الرئيسية"] {
     min-height: 100svh !important;
+    min-height: 100vh !important;
   }
   
   /* Larger touch targets for buttons */
   section[aria-label="الشاشة الرئيسية"] a {
-    padding: 14px 20px !important;
+    padding: 14px 22px !important;
     min-height: 48px;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BOTTOM NAV SAFE SPACING
+   Ensure content doesn't hide behind bottom mobile navigation
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  /* Add bottom padding to main content to avoid bottom nav overlap */
+  main {
+    padding-bottom: 80px;
+  }
+  
+  /* Footer needs extra bottom padding on mobile for bottom nav */
+  footer {
+    padding-bottom: 100px !important;
+  }
+  
+  /* Floating WhatsApp above bottom nav on mobile */
+  .whatsapp-float-mobile {
+    bottom: 90px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLLABLE TAB NAVIGATION (5+ tabs)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.scrollable-tabs {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.scrollable-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollable-tabs > * {
+  flex-shrink: 0;
 }
 
 /* Safe area for notched phones */

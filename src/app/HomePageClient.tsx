@@ -147,7 +147,7 @@ function SectionHeader({ label, title }: { label?: string; title: string }) {
       whileInView={{ opacity: 1, y: 0 }} 
       viewport={{ once: true, margin: "-50px" }} 
       transition={{ duration: 0.6 }} 
-      className="mb-16 text-center"
+      className="mb-10 sm:mb-16 text-center"
     >
       {label && (
         <p 
@@ -188,7 +188,7 @@ function SectionHeader({ label, title }: { label?: string; title: string }) {
 function GoldenParticles() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(10)].map((_, i) => (
+      {[...Array(6)].map((_, i) => (
         <motion.div 
           key={i} 
           className="absolute w-1 h-1 rounded-full"
@@ -292,12 +292,11 @@ function MatteGoldCard({
       className="group relative overflow-hidden cursor-pointer"
       style={{
         background: "linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(139, 125, 80, 0.05) 100%)",
-        border: "1px solid rgba(212, 175, 55, 0.3)",
+        border: "1px solid rgba(212, 175, 55, 0.25)",
         borderRadius: 16,
         backdropFilter: "blur(10px)",
         WebkitBackdropFilter: "blur(10px)",
-        // 65% NEGATIVE SPACE RULE
-        padding: 40,
+        padding: "24px",
         boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4)",
         transformStyle: "preserve-3d",
         perspective: 1000,
@@ -399,7 +398,7 @@ export function HomePageClient() {
           ═══════════════════════════════════════════════════════════════════════════ */}
       <section 
         ref={heroRef} 
-        className="relative min-h-screen h-auto sm:h-screen sm:min-h-[650px] sm:max-h-[950px] overflow-hidden" 
+        className="relative min-h-[100svh] h-auto sm:h-screen sm:min-h-[650px] sm:max-h-[950px] overflow-hidden" 
         aria-label="الشاشة الرئيسية"
       >
         {/* Background Video with Seamless Loop - Luxury Hospitality */}
@@ -423,7 +422,7 @@ export function HomePageClient() {
         
         {/* ══ HERO CONTENT CONTAINER ══ */}
         <motion.div 
-          className="absolute inset-0 flex flex-col items-center justify-start sm:justify-center text-center px-4 sm:px-6 pt-20 sm:pt-0" 
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6" 
           style={{ opacity: heroOpacity }}
         >
           {/* ══ GLASSMORPHISM CARD - RESPONSIVE FOR MOBILE ══ */}
@@ -431,7 +430,7 @@ export function HomePageClient() {
             initial={{ opacity: 0, scale: 0.92, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-[95vw] sm:w-full max-w-[95vw] sm:max-w-2xl px-4 sm:px-8 md:px-12 py-8 sm:py-12 md:py-16 rounded-[12px] sm:rounded-[16px] mt-4 sm:mt-0 mx-2"
+            className="relative w-[92vw] sm:w-full max-w-[92vw] sm:max-w-2xl px-5 sm:px-8 md:px-12 py-8 sm:py-12 md:py-16 rounded-2xl sm:rounded-[16px] mx-auto"
             style={{
               background: "rgba(18, 18, 18, 0.85)",
               backdropFilter: "blur(24px) saturate(200%)",
@@ -445,7 +444,7 @@ export function HomePageClient() {
             }}
           >
             {/* Sparkles */}
-            {[...Array(12)].map((_, i) => (
+            {[...Array(8)].map((_, i) => (
               <GoldenSparkle key={i} delay={i * 0.2} x={5 + (i % 3) * 45} y={8 + Math.floor(i / 3) * 28} />
             ))}
 
@@ -581,10 +580,13 @@ export function HomePageClient() {
                 color: "#0A0A0A",
                 fontWeight: 800,
                 fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)",
-                padding: "12px 24px sm:px-36px",
+                padding: "14px 28px",
                 borderRadius: 50,
                 boxShadow: "0 6px 25px rgba(212, 175, 55, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 transition: "all 0.3s ease",
+                minHeight: 48,
+                display: "inline-flex",
+                alignItems: "center",
               }}
             >
               <span className="relative z-10 font-cairo">اكتشف خدماتنا</span>
@@ -610,10 +612,13 @@ export function HomePageClient() {
                 color: "#F9E488",
                 fontWeight: 700,
                 fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)",
-                padding: "12px 24px sm:px-36px",
+                padding: "14px 28px",
                 borderRadius: 50,
                 boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
                 transition: "all 0.3s ease",
+                minHeight: 48,
+                display: "inline-flex",
+                alignItems: "center",
               }}
             >
               <span className="font-cairo">تواصل معنا</span>
@@ -623,11 +628,11 @@ export function HomePageClient() {
 
         {/* ══ SCROLL INDICATOR ══ */}
         <motion.div
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 12, 0] }}
+          className="absolute bottom-24 sm:bottom-10 left-1/2 -translate-x-1/2 z-10"
+          animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="flex flex-col items-center gap-3" style={{ opacity: 0.7 }}>
+          <div className="flex flex-col items-center gap-2" style={{ opacity: 0.7 }}>
             <span className="text-[#F9E488] text-xs tracking-[0.2em] font-medium">اكتشف</span>
             <div 
               className="w-6 h-10 rounded-full flex items-start justify-center pt-2"
@@ -654,9 +659,9 @@ export function HomePageClient() {
       {/* ═══════════════════════════════════════════════════════════════════════════
           PARTNERS SECTION
           ═══════════════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-20 bg-[#121212]">
+      <section className="relative py-12 sm:py-20 bg-[#121212]">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(212, 175, 55, 0.08) 0%, transparent 65%)" }} />
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <Suspense fallback={<div className="h-32 bg-[#1A1A1A] rounded-lg animate-pulse" />}>
             <PartnersMarquee />
           </Suspense>
@@ -667,13 +672,13 @@ export function HomePageClient() {
           WHY US SECTION - MATTE GOLD CARDS
           65% NEGATIVE SPACE RULE ENFORCED
           ═══════════════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 sm:py-32 bg-[#121212]">
+      <section className="relative py-16 sm:py-24 lg:py-32 bg-[#121212]">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(212, 175, 55, 0.08) 0%, transparent 65%)" }} />
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <SectionHeader label="لماذا نحن" title="لماذا تختار كيف الضيافة؟" />
           
           {/* Grid with Matte Gold Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {whyCards.map((card, i) => (
               <MatteGoldCard 
                 key={i}
@@ -690,7 +695,7 @@ export function HomePageClient() {
       {/* ═══════════════════════════════════════════════════════════════════════════
           CTA SECTION
           ═══════════════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 sm:py-32 bg-[#121212] overflow-hidden">
+      <section className="relative py-16 sm:py-24 lg:py-32 bg-[#121212] overflow-hidden">
         <div className="absolute inset-0 opacity-25">
           <div 
             className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl"
@@ -702,7 +707,7 @@ export function HomePageClient() {
           />
         </div>
         
-        <div className="container mx-auto px-6 relative z-10 text-center">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
           {/* Title - CAIRO */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
