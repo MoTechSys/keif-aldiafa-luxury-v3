@@ -60,14 +60,35 @@ export default function ContactClient() {
 
       {/* CONTACT METHODS */}
       <section className="px-4 mb-12">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
-          {contactMethods.map((method, i) => (
-            <motion.a key={i} href={method.href} target={method.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.08 }} whileHover={{ y: -4 }} className="card-luxury p-4 sm:p-5 rounded-2xl text-center">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl mx-auto mb-2 sm:mb-3 flex items-center justify-center" style={{ background: `${method.color}18`, border: `1px solid ${method.color}40`, color: method.color }}>{method.icon}</div>
-              <p className="text-[#F5F5DC] text-xs sm:text-sm" style={{ fontWeight: 600 }}>{method.label}</p>
-              <p className="text-[#F5F5DC]/40 text-[10px] sm:text-xs mt-1 truncate">{method.value}</p>
-            </motion.a>
-          ))}
+        <div className="max-w-4xl mx-auto">
+          {/* First row: 3 items on mobile, all 5 on desktop */}
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-2.5 sm:gap-4">
+            {contactMethods.slice(0, 3).map((method, i) => (
+              <motion.a key={i} href={method.href} target={method.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }} className="card-luxury p-3 sm:p-5 rounded-2xl text-center min-h-[88px] flex flex-col items-center justify-center">
+                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl mx-auto mb-1.5 sm:mb-3 flex items-center justify-center flex-shrink-0" style={{ background: `${method.color}18`, border: `1px solid ${method.color}40`, color: method.color }}>{method.icon}</div>
+                <p className="text-[#F5F5DC] text-[11px] sm:text-sm" style={{ fontWeight: 600 }}>{method.label}</p>
+                <p className="text-[#F5F5DC]/40 text-[9px] sm:text-xs mt-0.5 truncate max-w-full">{method.value}</p>
+              </motion.a>
+            ))}
+            {/* Desktop only: last 2 items inline */}
+            {contactMethods.slice(3).map((method, i) => (
+              <motion.a key={i + 3} href={method.href} target={method.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: (i + 3) * 0.06 }} className="card-luxury p-3 sm:p-5 rounded-2xl text-center min-h-[88px] hidden md:flex flex-col items-center justify-center">
+                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl mx-auto mb-1.5 sm:mb-3 flex items-center justify-center flex-shrink-0" style={{ background: `${method.color}18`, border: `1px solid ${method.color}40`, color: method.color }}>{method.icon}</div>
+                <p className="text-[#F5F5DC] text-[11px] sm:text-sm" style={{ fontWeight: 600 }}>{method.label}</p>
+                <p className="text-[#F5F5DC]/40 text-[9px] sm:text-xs mt-0.5 truncate max-w-full">{method.value}</p>
+              </motion.a>
+            ))}
+          </div>
+          {/* Second row: last 2 items on mobile */}
+          <div className="grid grid-cols-2 gap-2.5 mt-2.5 md:hidden">
+            {contactMethods.slice(3).map((method, i) => (
+              <motion.a key={i + 3} href={method.href} target={method.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: (i + 3) * 0.06 }} className="card-luxury p-3 rounded-2xl text-center min-h-[88px] flex flex-col items-center justify-center">
+                <div className="w-9 h-9 rounded-xl mx-auto mb-1.5 flex items-center justify-center flex-shrink-0" style={{ background: `${method.color}18`, border: `1px solid ${method.color}40`, color: method.color }}>{method.icon}</div>
+                <p className="text-[#F5F5DC] text-[11px]" style={{ fontWeight: 600 }}>{method.label}</p>
+                <p className="text-[#F5F5DC]/40 text-[9px] mt-0.5 truncate max-w-full">{method.value}</p>
+              </motion.a>
+            ))}
+          </div>
         </div>
       </section>
 

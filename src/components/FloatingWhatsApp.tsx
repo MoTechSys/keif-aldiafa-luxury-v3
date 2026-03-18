@@ -12,7 +12,7 @@ export default function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="تواصل عبر واتساب"
-      className="fixed bottom-24 left-4 z-40 w-14 h-14 rounded-full flex items-center justify-center whatsapp-pulse md:bottom-8"
+      className="fixed bottom-[88px] left-4 z-40 w-14 h-14 rounded-full flex items-center justify-center whatsapp-pulse md:bottom-8"
       style={{
         background: "linear-gradient(135deg, #25D366, #1da851)",
         boxShadow: "0 4px 20px rgba(37,211,102,0.5)",

@@ -187,26 +187,25 @@ function SectionHeader({ label, title }: { label?: string; title: string }) {
 // ═══════════════════════════════════════════════════════════════════════════
 function GoldenParticles() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(6)].map((_, i) => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
+      {[...Array(4)].map((_, i) => (
         <motion.div 
           key={i} 
           className="absolute w-1 h-1 rounded-full"
           style={{ 
-            left: `${8 + i * 10}%`, 
-            top: `${12 + (i % 4) * 22}%`,
+            left: `${10 + i * 18}%`, 
+            top: `${15 + (i % 3) * 25}%`,
             background: "radial-gradient(circle, #F9E488 0%, #D4AF37 100%)",
-            boxShadow: "0 0 8px rgba(212, 175, 55, 0.9)"
+            boxShadow: "0 0 6px rgba(212, 175, 55, 0.7)"
           }} 
           animate={{ 
-            y: [0, -20, 0], 
-            opacity: [0.3, 0.8, 0.3], 
-            scale: [1, 1.3, 1] 
+            y: [0, -15, 0], 
+            opacity: [0.3, 0.7, 0.3], 
           }} 
           transition={{ 
-            duration: 4 + i * 0.4, 
+            duration: 5 + i * 0.5, 
             repeat: Infinity, 
-            delay: i * 0.5, 
+            delay: i * 0.6, 
             ease: "easeInOut" 
           }} 
         />
@@ -443,9 +442,9 @@ export function HomePageClient() {
               `,
             }}
           >
-            {/* Sparkles */}
-            {[...Array(8)].map((_, i) => (
-              <GoldenSparkle key={i} delay={i * 0.2} x={5 + (i % 3) * 45} y={8 + Math.floor(i / 3) * 28} />
+            {/* Sparkles - reduced on mobile */}
+            {[...Array(4)].map((_, i) => (
+              <GoldenSparkle key={i} delay={i * 0.4} x={10 + (i % 2) * 70} y={10 + Math.floor(i / 2) * 60} />
             ))}
 
             {/* ══ SINCE 2016 BADGE ══ */}
@@ -565,38 +564,32 @@ export function HomePageClient() {
 
           {/* ══ CTA BUTTONS ══ */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.95 }}
-            className="flex gap-3 sm:gap-4 flex-wrap justify-center mt-6 sm:mt-12 md:mt-16 relative z-20 px-2"
+            transition={{ duration: 0.5, delay: 0.9 }}
+            className="flex gap-3 sm:gap-4 flex-wrap justify-center mt-6 sm:mt-10 md:mt-14 relative z-20 px-4 w-full max-w-md mx-auto sm:max-w-none"
           >
             {/* PRIMARY GOLD BUTTON - Gold Shine Gradient */}
             <Link
               href="/services"
-              className="group relative overflow-hidden"
+              className="group relative overflow-hidden flex-1 sm:flex-none text-center"
               style={{
                 background: "linear-gradient(90deg, #D4AF37 0%, #F9E488 50%, #B8860B 100%)",
                 backgroundSize: "200% auto",
                 color: "#0A0A0A",
                 fontWeight: 800,
-                fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)",
-                padding: "14px 28px",
+                fontSize: "0.9rem",
+                padding: "14px 24px",
                 borderRadius: 50,
                 boxShadow: "0 6px 25px rgba(212, 175, 55, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 transition: "all 0.3s ease",
                 minHeight: 48,
                 display: "inline-flex",
                 alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <span className="relative z-10 font-cairo">اكتشف خدماتنا</span>
-              <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{
-                  background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)",
-                  transform: "translateX(-100%)",
-                }}
-              />
             </Link>
             
             {/* OUTLINE GOLD BUTTON */}
@@ -604,6 +597,7 @@ export function HomePageClient() {
               href={`https://wa.me/${WA}?text=${encodeURIComponent("مرحباً، أود الاستفسار عن خدمات الضيافة لديكم.")}`}
               target="_blank"
               rel="noopener noreferrer"
+              className="flex-1 sm:flex-none text-center"
               style={{
                 background: "rgba(212, 175, 55, 0.08)",
                 backdropFilter: "blur(12px)",
@@ -611,14 +605,15 @@ export function HomePageClient() {
                 border: "1.5px solid rgba(212, 175, 55, 0.5)",
                 color: "#F9E488",
                 fontWeight: 700,
-                fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)",
-                padding: "14px 28px",
+                fontSize: "0.9rem",
+                padding: "14px 24px",
                 borderRadius: 50,
                 boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
                 transition: "all 0.3s ease",
                 minHeight: 48,
                 display: "inline-flex",
                 alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <span className="font-cairo">تواصل معنا</span>
@@ -745,14 +740,14 @@ export function HomePageClient() {
               href={`https://wa.me/${WA}?text=${encodeURIComponent("مرحباً، أود الاستفسار عن خدمات الضيافة لديكم.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden"
+              className="group relative overflow-hidden min-h-[48px] flex items-center justify-center"
               style={{
                 background: "linear-gradient(90deg, #D4AF37 0%, #F9E488 50%, #B8860B 100%)",
                 backgroundSize: "200% auto",
                 color: "#0A0A0A",
                 fontWeight: 800,
-                fontSize: "1rem",
-                padding: "16px 40px",
+                fontSize: "0.95rem",
+                padding: "14px 32px",
                 borderRadius: 50,
                 boxShadow: "0 8px 30px rgba(212, 175, 55, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 transition: "all 0.3s ease",
@@ -764,6 +759,7 @@ export function HomePageClient() {
             {/* Outline Gold Button */}
             <Link
               href="/portfolio"
+              className="min-h-[48px] flex items-center justify-center"
               style={{
                 background: "rgba(212, 175, 55, 0.08)",
                 backdropFilter: "blur(12px)",
@@ -771,8 +767,8 @@ export function HomePageClient() {
                 border: "1.5px solid rgba(212, 175, 55, 0.5)",
                 color: "#F9E488",
                 fontWeight: 700,
-                fontSize: "1rem",
-                padding: "16px 40px",
+                fontSize: "0.95rem",
+                padding: "14px 32px",
                 borderRadius: 50,
                 boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
                 transition: "all 0.3s ease",

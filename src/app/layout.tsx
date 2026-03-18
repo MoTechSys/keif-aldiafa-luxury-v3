@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Sans_Arabic, Tajawal, Amiri, Cairo } from "next/font/google";
+import { Cairo, Tajawal } from "next/font/google";
 import "@/styles/globals.css";
 import {
   generateLocalBusinessSchema,
@@ -13,10 +13,11 @@ const SITE_URL = "https://keifaldiafa.com";
 // TYPOGRAPHY PROTOCOL - GLM LUXURY
 // CAIRO: Strictly for Headings (H1-H6) - Weights 700-900
 // TAJAWAL: Strictly for Body text - Weights 400-500
+// Reduced font weights to minimize download size (~30% smaller)
 // ═══════════════════════════════════════════════════════════════════════════
 
 const cairo = Cairo({
-  subsets: ["arabic", "latin"],
+  subsets: ["arabic"],
   weight: ["700", "800", "900"],
   display: "swap",
   variable: "--font-cairo",
@@ -24,36 +25,20 @@ const cairo = Cairo({
 });
 
 const tajawal = Tajawal({
-  subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "700", "800", "900"],
+  subsets: ["arabic"],
+  weight: ["400", "500", "700"],
   display: "swap",
   variable: "--font-tajawal",
   preload: true,
 });
 
-const ibmPlexArabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-ibm-plex-arabic",
-  preload: true,
-});
-
-const amiri = Amiri({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-  display: "swap",
-  variable: "--font-amiri",
-  preload: true,
-});
-
 export const metadata: Metadata = {
   title: {
-    default: "كيف الضيافة | خدمات الضيافة الفاخرة في المملكة",
+    default: "كيف الضيافة | خدمات الضيافة الفاخرة في المملكة العربية السعودية",
     template: "%s | كيف الضيافة",
   },
   description:
-    "منصة تجربة فاخرة تعكس جودة وفخامة خدمات الضيافة السعودية - قهوة، شاي، تقديمات راقية وفريق احترافي.",
+    "شركة كيف الضيافة - الخيار الأمثل لخدمات الضيافة الفاخرة في السعودية. نقدم قهوة عربية أصيلة، شاي فاخر، مضيفون ومضيفات محترفات، تقديمات راقية لجميع المناسبات والفعاليات منذ 2016.",
   keywords: [
     "كيف الضيافة",
     "خدمات الضيافة",
@@ -67,10 +52,18 @@ export const metadata: Metadata = {
     "حفلات",
     "مناسبات",
     "ضيافة السعودية",
+    "ضيافة فاخرة السعودية",
+    "قهوة عربية الرياض",
+    "مضيفات محترفات",
+    "خدمات ضيافة جدة",
+    "ضيافة مناسبات الدمام",
     "Keif Al-Diafa",
     "Saudi hospitality",
     "luxury catering",
   ],
+  authors: [{ name: "شركة كيف الضيافة", url: SITE_URL }],
+  creator: "كيف الضيافة",
+  publisher: "كيف الضيافة",
   metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: SITE_URL,
@@ -82,16 +75,16 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "كيف الضيافة",
     locale: "ar_SA",
-    title: "كيف الضيافة | خدمات الضيافة الفاخرة في المملكة",
+    title: "كيف الضيافة | خدمات الضيافة الفاخرة في المملكة العربية السعودية",
     description:
-      "منصة تجربة فاخرة تعكس جودة وفخامة خدمات الضيافة السعودية - قهوة، شاي، تقديمات راقية وفريق احترافي.",
+      "شركة كيف الضيافة - الخيار الأمثل لخدمات الضيافة الفاخرة في السعودية. قهوة عربية، مضيفون محترفون، تقديمات راقية.",
     url: SITE_URL,
     images: [
       {
         url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "كيف الضيافة - خدمات الضيافة الفاخرة",
+        alt: "كيف الضيافة - خدمات الضيافة الفاخرة في المملكة العربية السعودية",
         type: "image/jpeg",
       },
     ],
@@ -100,7 +93,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "كيف الضيافة | خدمات الضيافة الفاخرة في المملكة",
     description:
-      "منصة تجربة فاخرة تعكس جودة وفخامة خدمات الضيافة السعودية",
+      "شركة كيف الضيافة - الخيار الأمثل لخدمات الضيافة الفاخرة في السعودية",
     images: [`${SITE_URL}/og-image.jpg`],
     creator: "@keifdiafa",
   },
@@ -136,7 +129,6 @@ export const metadata: Metadata = {
   category: "hospitality",
 };
 
-// ERADICATED PURE BLACK - Using #121212 for baseline depth
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: dark)", color: "#121212" },
@@ -157,9 +149,14 @@ export default function RootLayout({
     <html
       lang="ar"
       dir="rtl"
-      className={`scroll-smooth ${cairo.variable} ${tajawal.variable} ${ibmPlexArabic.variable} ${amiri.variable}`}
+      className={`scroll-smooth ${cairo.variable} ${tajawal.variable}`}
     >
       <head>
+        {/* Preconnect to critical origins for faster font/resource loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://wa.me" />
+        
         {/* Organization Schema */}
         <script
           type="application/ld+json"
@@ -182,7 +179,6 @@ export default function RootLayout({
           }}
         />
       </head>
-      {/* ERADICATED PURE BLACK: #121212 baseline - NO #000000 */}
       <body className="bg-[#121212] text-[#E0E0E0] antialiased">
         {/* Skip to main content - Accessibility */}
         <a

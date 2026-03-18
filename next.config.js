@@ -9,7 +9,7 @@ const securityHeaders = [
   { key: "X-XSS-Protection", value: "1; mode=block" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "X-Content-Type-Options", value: "nosniff" },
-  { key: "Referrer-Policy", value: "origin-when-cross-origin" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   {
     key: "Permissions-Policy",
     value:
@@ -23,10 +23,11 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "img-src 'self' data: blob: https://images.unsplash.com https://via.placeholder.com https://*.unsplash.com https://raw.githubusercontent.com",
       "font-src 'self' https://fonts.gstatic.com data:",
-      "connect-src 'self' https://www.google-analytics.com https://wa.me",
+      "connect-src 'self' https://www.google-analytics.com https://wa.me https://fonts.googleapis.com https://fonts.gstatic.com",
+      "media-src 'self' blob: data:",
       "frame-ancestors 'self'",
       "base-uri 'self'",
-      "form-action 'self'",
+      "form-action 'self' https://wa.me",
     ].join("; "),
   },
 ];
@@ -40,6 +41,7 @@ const nextConfig = {
   // Experimental performance features
   experimental: {
     scrollRestoration: true,
+    optimizePackageImports: ['framer-motion', 'motion', 'lucide-react'],
   },
 
   images: {
@@ -66,7 +68,7 @@ const nextConfig = {
       },
     ],
     formats: ["image/avif", "image/webp"],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2560, 3168],
+    deviceSizes: [375, 430, 640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 60, // 60 days
   },
@@ -77,8 +79,9 @@ const nextConfig = {
         source: "/(.*)",
         headers: securityHeaders,
       },
+      // Static assets - immutable long cache
       {
-        source: "/(.*)\\.(jpg|jpeg|png|gif|svg|webp|avif|ico|woff|woff2)",
+        source: "/(.*)\\.(jpg|jpeg|png|gif|svg|webp|avif|ico|woff|woff2|mp4|webm)",
         headers: [
           {
             key: "Cache-Control",
@@ -86,6 +89,7 @@ const nextConfig = {
           },
         ],
       },
+      // Next.js static chunks - immutable
       {
         source: "/_next/static/(.*)",
         headers: [
@@ -95,12 +99,23 @@ const nextConfig = {
           },
         ],
       },
+      // Optimized images
       {
         source: "/_next/image(.*)",
         headers: [
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // HTML pages - stale-while-revalidate for fast loads
+      {
+        source: "/:path((?!_next|api|.*\\..*).*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800",
           },
         ],
       },
